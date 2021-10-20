@@ -31,21 +31,13 @@ export default function Login() {
                 if(validCredentials){
                     history.replace('/products')
                     // alert("success")
+                }
+                else{
+                    alert("wrong credentials")
                 }                
             }
         })
-        // const data = localStorage.getItem("existingusers");
-        // const dataObject = JSON.parse(data);
-        // console.log(dataObject);
-      
-        // if (validCredentials) {
-        //     // alert("succes")
-        //     dispatch(notifyLogin({ userData: userDataObject }))
-        //     history.replace('/home')
-        // }
-        // else {
-        //     alert("Wrong credentials!!")
-        // }
+       
     }
     return (
         <Container className="w-25 mt-5">
