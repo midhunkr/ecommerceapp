@@ -8,8 +8,8 @@ export default function ProductPage() {
    
     return (
         <>
-            <CustomNavbar></CustomNavbar>
-            <Row md={4}>
+         
+            <Row md={3}>
                 {productData.map((item) => (
                     <Col>
                          <ProductCard data={item}></ProductCard>

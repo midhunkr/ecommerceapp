@@ -1,8 +1,10 @@
 import { Form, Button, Container, Row } from 'react-bootstrap'
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import { useHistory } from 'react-router'
 import axios from 'axios';
+import LoginContext from '../../Context/loginContext';
 export default function Login() {
+    const context=useContext(LoginContext)
     const emailRef = useRef();
     const passwordRef = useRef();
     const history = useHistory();
@@ -29,7 +31,9 @@ export default function Login() {
                 const index = userData.findIndex((item) => item.email == emailId && item.password == password);
                 const userInfo = userData[index];
                 if(validCredentials){
+                   
                     history.replace('/products')
+                    context.changeToLogin()
                     // alert("success")
                 }
                 else{

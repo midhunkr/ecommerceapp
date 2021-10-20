@@ -1,16 +1,34 @@
+import { useContext } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { useHistory } from "react-router";
+import LoginContext from "../Context/loginContext";
 export default function CustomNavbar() {
+    const context = useContext(LoginContext);
+    const history = useHistory();
+    const goToCart = () => {
+        history.replace('/cart');
+    }
+    const goToProfile = () => {
+        history.replace('/profile');
+    }
+    const goToWishList = () => {
+        history.replace('/wishlist');
+    }
+    const logOut = () => {
+        context.changeToLogOut()
+        history.replace('/register')
+    }
     return (
-        <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="#home" className="ps-5">E-Commerce App</Navbar.Brand>
+        <Navbar bg="success" variant="dark">
+            <Navbar.Brand className="ps-5">E-Commerce App</Navbar.Brand>
             <Container className="d-flex justify-content-end">
+                {context.isLoggedIn && <Nav className="d-flex justify-content-end">
+                    <Nav.Link onClick={goToCart}>Cart</Nav.Link>
+                    <Nav.Link onClick={goToProfile}>Profile</Nav.Link>
+                    <Nav.Link onClick={goToWishList}>WishList</Nav.Link>
+                    <Nav.Link onClick={logOut}>Log Out</Nav.Link>
+                </Nav>}
 
-                <Nav className="d-flex justify-content-end">
-                    <Nav.Link href="#home">Cart</Nav.Link>
-                    <Nav.Link href="#features">Profile</Nav.Link>
-                    <Nav.Link href="#pricing">WishList</Nav.Link>
-                    <Nav.Link href="#pricing">Log Out</Nav.Link>
-                </Nav>
             </Container>
         </Navbar>
     )
