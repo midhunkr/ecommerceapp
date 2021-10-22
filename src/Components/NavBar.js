@@ -30,6 +30,7 @@ export default function CustomNavbar() {
                     <Nav.Link onClick={goToCart}>Cart</Nav.Link>
                    
                     <Nav.Link onClick={goToWishList}>WishList</Nav.Link>
+                    <Nav.Link onClick={goToWishList}>Orders</Nav.Link>
                     <Nav.Link onClick={goToProfile}>Profile</Nav.Link>
                     <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </Nav>}
