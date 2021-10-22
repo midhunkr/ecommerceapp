@@ -31,6 +31,9 @@ export default function Routes() {
             <Route path='/cart' exact>
                 <Cart></Cart>
             </Route>
+            <Route path='/orders' exact>
+                <Orders></Orders>
+            </Route>
             <Route path='/wishlist' exact>
                 <WishList></WishList>
             </Route>

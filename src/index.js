@@ -8,17 +8,22 @@ import { BrowserRouter } from 'react-router-dom'
 import { LoginContextProvider } from './Context/loginContext';
 import { CartContextProvider } from './Context/cartContext';
 import { WishListContextProvider } from './Context/wishListContext';
+import { PaymentCardProvider } from './Context/cardContext';
 
 ReactDOM.render(
   <BrowserRouter>
 
-   <LoginContextProvider>
-    <CartContextProvider>
-      <WishListContextProvider>
-      <App />
-      </WishListContextProvider>
+
+    <LoginContextProvider>
+      <CartContextProvider>
+        <WishListContextProvider>
+          
+          <PaymentCardProvider>
+            <App />
+          </PaymentCardProvider>
+        </WishListContextProvider>
       </CartContextProvider>
-   </LoginContextProvider>
+    </LoginContextProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
