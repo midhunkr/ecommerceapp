@@ -5,6 +5,13 @@ import CartContext from "../../Context/cartContext"
 
 export default function Cart() {
   const context = useContext(CartContext);
+  if(context.items.length==0){
+    return(
+        <Container className="d-flex" fluid>
+            <h3 className="justify-content-center m-2">No Products In Cart!!!!</h3>
+        </Container>
+    )
+}
 
   return (
     <Container>

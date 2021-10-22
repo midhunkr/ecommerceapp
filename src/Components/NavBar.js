@@ -28,8 +28,9 @@ export default function CustomNavbar() {
                 {context.isLoggedIn && <Nav className="d-flex justify-content-end">
                     <Nav.Link onClick={goToHome}>Home</Nav.Link>
                     <Nav.Link onClick={goToCart}>Cart</Nav.Link>
-                    <Nav.Link onClick={goToProfile}>Profile</Nav.Link>
+                   
                     <Nav.Link onClick={goToWishList}>WishList</Nav.Link>
+                    <Nav.Link onClick={goToProfile}>Profile</Nav.Link>
                     <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </Nav>}
 

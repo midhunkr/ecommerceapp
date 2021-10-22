@@ -23,15 +23,13 @@ export function CartContextProvider(props){
         });
     }
     function removeProductFromCart(productName){
-        console.log(`rec. pname ${productName}`);
+       
         setCartItems((prev)=>{
             return prev.filter((item)=>item.name!=productName);
         })
       
     }
     function productIsInCart(productName){
-        console.log(`rec. pname ${productName}`);
-        cartItems.forEach((item)=>console.log(`in cartItem ${item.name}`))
        return cartItems.some((item)=>item.name==productName)
     }  
     return(

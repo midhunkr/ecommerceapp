@@ -5,6 +5,13 @@ import WishListContext from "../../Context/wishListContext";
 
 export default function WishList(){
     const context=useContext(WishListContext)
+    if(context.items.length==0){
+        return(
+            <Container className="d-flex" fluid>
+                <h3 className="justify-content-center m-2">No Products In Wishlist!!!!</h3>
+            </Container>
+        )
+    }
     return(
         <Container>
         <Row md={3}>
