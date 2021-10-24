@@ -27,7 +27,7 @@ export default function Cart() {
         <Row md={3}>
           {context.items.map((item) => (
             <Col>
-              <ProductCard data={item} screenIsCart={true} screeIsWishList={false}></ProductCard>
+              <ProductCard data={item} disableButtons={false} screenIsCart={true} screeIsWishList={false}></ProductCard>
             </Col>
           ))}
         </Row>
@@ -55,7 +55,7 @@ export default function Cart() {
           <Modal.Title >Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Payment></Payment>
+          <Payment products={context.items}></Payment>
         </Modal.Body>
       </Modal>
     </>

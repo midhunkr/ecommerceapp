@@ -9,6 +9,7 @@ import { LoginContextProvider } from './Context/loginContext';
 import { CartContextProvider } from './Context/cartContext';
 import { WishListContextProvider } from './Context/wishListContext';
 import { PaymentCardProvider } from './Context/cardContext';
+import { OrderContextProvider } from './Context/orderContex';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,9 +18,10 @@ ReactDOM.render(
     <LoginContextProvider>
       <CartContextProvider>
         <WishListContextProvider>
-          
           <PaymentCardProvider>
-            <App />
+            <OrderContextProvider>
+              <App />
+            </OrderContextProvider>
           </PaymentCardProvider>
         </WishListContextProvider>
       </CartContextProvider>

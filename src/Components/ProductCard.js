@@ -8,6 +8,8 @@ export default function ProductCard(props) {
     const data = props.data;
     const screenIsCart = props.screenIsCart;
     const screenIsWishList = props.screeIsWishList;
+    const disableButtons = false;
+
     const context = useContext(CartContext);
     const wishListContext = useContext(WishListContext);
     const [isAdded, setIsAdded] = useState(false);
@@ -16,15 +18,15 @@ export default function ProductCard(props) {
     const addedToWishListContext = wishListContext.isInWishList(props.data.name);
 
     // console.log(alreadyAdded);
-    const history=useHistory();
-    const showDetails=()=>{
+    const history = useHistory();
+    const showDetails = () => {
         history.push(
             '/productdetails',
             props.data
         )
     }
-   
-    
+
+
     const addToCart = () => {
         context.addToCart(props.data);
         context.isInCart(props.data.name);
@@ -53,14 +55,17 @@ export default function ProductCard(props) {
                             Rating: {props.data.rating}
                         </div>
                     </Card.Text>
-                    {!screenIsCart ? <Button variant="primary" onClick={addToCart}>{isAdded || alreadyAdded ? 'AddedToCart' : 'Add To Cart'}</Button> : <Button onClick={remove}>Remove</Button>}
-                    {screenIsCart ? <Button variant="danger" className="d-inline ms-2">Buy</Button> : addedToWishListContext || isAddedToWishList ? screenIsWishList ? <Button variant="danger" className="d-inline ms-2" onClick={removeFromWishList}>Remove</Button> : <Button variant="danger" className="d-inline ms-2">AddedToWishList</Button> : <Button variant="danger" className="d-inline ms-2" onClick={addToWishList}>Add To WishList</Button>}
+                    { !props.disableButtons && <>
+                        {!screenIsCart ? <Button variant="primary" onClick={addToCart}>{isAdded || alreadyAdded ? 'AddedToCart' : 'Add To Cart'}</Button> : <Button onClick={remove}>Remove</Button>}
+                        {screenIsCart ? <Button variant="danger" className="d-inline ms-2">Buy</Button> : addedToWishListContext || isAddedToWishList ? screenIsWishList ? <Button variant="danger" className="d-inline ms-2" onClick={removeFromWishList}>Remove</Button> : <Button variant="danger" className="d-inline ms-2">AddedToWishList</Button> : <Button variant="danger" className="d-inline ms-2" onClick={addToWishList}>Add To WishList</Button>}
+                    </>}
+
 
 
                 </Card.Body>
             </Card>
-           
-           
+
+
         </>
     )
 }

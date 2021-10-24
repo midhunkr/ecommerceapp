@@ -5,7 +5,8 @@ const CartContext=createContext(
         items:[],
         addToCart:()=>{},
         removeFromCart:()=>{},
-        isInCart:()=>{}
+        isInCart:()=>{},
+        clearCart:()=>{}
     }
 )
 
@@ -15,7 +16,8 @@ export function CartContextProvider(props){
         items:cartItems,
         addToCart:addProductToCart,
         removeFromCart:removeProductFromCart,
-        isInCart:productIsInCart
+        isInCart:productIsInCart,
+        clearCart:clearCart
     }
     function addProductToCart(product){
         setCartItems((prev)=>{
@@ -28,6 +30,9 @@ export function CartContextProvider(props){
             return prev.filter((item)=>item.name!=productName);
         })
       
+    }
+    function clearCart(){
+        setCartItems([])
     }
     function productIsInCart(productName){
        return cartItems.some((item)=>item.name==productName)

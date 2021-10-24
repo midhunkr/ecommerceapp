@@ -17,7 +17,7 @@ export default function WishList(){
         <Row md={3}>
          {context.items.map((item) => (
            <Col>
-             <ProductCard data={item} screenIsCart={false} screeIsWishList={true}></ProductCard>
+             <ProductCard data={item} screenIsCart={false} screeIsWishList={true} disableButtons={false}></ProductCard>
            </Col>
          ))}
        </Row>
