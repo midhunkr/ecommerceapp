@@ -55,7 +55,7 @@ export default function Cart() {
           <Modal.Title >Payment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Payment products={context.items}></Payment>
+          <Payment products={context.items} notFromCart={false}></Payment>
         </Modal.Body>
       </Modal>
     </>

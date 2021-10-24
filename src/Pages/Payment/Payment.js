@@ -7,12 +7,16 @@ import CartContext from "../../Context/cartContext";
 import OrderContext from "../../Context/orderContex";
 
 export default function Payment(props) {
+    const notFromCart=props.notFromCart
     const cardContext = useContext(PaymentCardContex);
     const cartContext=useContext(CartContext);
     const orderContext=useContext(OrderContext);
     const moveToOrders = () => {
         orderContext.addItems(props.products)
-        cartContext.clearCart()
+        if(!notFromCart){
+            cartContext.clearCart()
+        }
+        
     }
     return (
         <Container>

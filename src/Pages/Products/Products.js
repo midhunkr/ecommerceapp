@@ -75,7 +75,7 @@ export default function ProductPage() {
                         {isLoading ? <div>Loading</div> : <Row md={3}>
                             {data.map((item) => (
                                 <Col>
-                                    <ProductCard data={item} screenIsCart={false} screeIsWishList={false}></ProductCard>
+                                    <ProductCard data={item} screenIsCart={false} screeIsWishList={false} screenIsHome={true}></ProductCard>
                                 </Col>
                             ))}
                         </Row>}
