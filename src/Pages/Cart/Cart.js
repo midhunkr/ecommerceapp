@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { Col, Container, Row, Button, Modal } from "react-bootstrap";
 import ProductCard from "../../Components/ProductCard";
 import CartContext from "../../Context/cartContext"
+import Payment from "../Payment/Payment";
 
 export default function Cart() {
   const context = useContext(CartContext);
@@ -53,7 +54,9 @@ export default function Cart() {
         <Modal.Header closeButton >
           <Modal.Title >Payment</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Hi There</Modal.Body>
+        <Modal.Body>
+          <Payment></Payment>
+        </Modal.Body>
       </Modal>
     </>
   )
