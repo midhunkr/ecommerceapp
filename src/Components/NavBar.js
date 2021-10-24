@@ -21,6 +21,9 @@ export default function CustomNavbar() {
         context.changeToLogOut()
         history.replace('/register')
     }
+    const goToOrders=()=>{
+        history.replace('/orders')
+    }
     return (
         <Navbar bg="success" variant="dark">
             <Navbar.Brand className="ps-5">E-Commerce App</Navbar.Brand>
@@ -30,7 +33,7 @@ export default function CustomNavbar() {
                     <Nav.Link onClick={goToCart}>Cart</Nav.Link>
                    
                     <Nav.Link onClick={goToWishList}>WishList</Nav.Link>
-                    <Nav.Link onClick={goToWishList}>Orders</Nav.Link>
+                    <Nav.Link onClick={goToOrders}>Orders</Nav.Link>
                     <Nav.Link onClick={goToProfile}>Profile</Nav.Link>
                     <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                 </Nav>}

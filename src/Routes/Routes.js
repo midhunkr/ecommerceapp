@@ -1,6 +1,7 @@
 import { Route, Switch, Redirect } from "react-router";
 import Cart from "../Pages/Cart/Cart";
 import Login from "../Pages/Login/Login";
+import Orders from "../Pages/Orders/Orders";
 import Payment from "../Pages/Payment/Payment";
 import ProductDetails from "../Pages/ProductDeatils/ProductDetails";
 import ProductPage from "../Pages/Products/Products";
@@ -32,7 +33,7 @@ export default function Routes() {
                 <Cart></Cart>
             </Route>
             <Route path='/orders' exact>
-                <Orders></Orders>
+               <Orders></Orders>
             </Route>
             <Route path='/wishlist' exact>
                 <WishList></WishList>

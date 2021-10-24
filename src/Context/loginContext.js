@@ -9,7 +9,7 @@ const LoginContext=createContext({
 
 export function LoginContextProvider(props){
     const [loggedIn,setLoginInfo]=useState(false)
-    const [useInformation,setUserInormation]=useState([])
+    const [useInformation,setUserInormation]=useState('')
     const context={
         isLoggedIn:loggedIn,
         userInfo:useInformation,
@@ -17,7 +17,10 @@ export function LoginContextProvider(props){
         changeToLogOut:changeStateToLogOut
     }
     function changeStatToLogin(userData){
-        setUserInormation();
+        const data=JSON.stringify(userData);
+        console.log(`user data ${data}`);
+        
+        setUserInormation(userData);
         setLoginInfo(true);
     }
     function changeStateToLogOut(){

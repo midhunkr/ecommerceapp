@@ -31,9 +31,11 @@ export default function Login() {
                 const index = userData.findIndex((item) => item.email == emailId && item.password == password);
                 const userInfo = userData[index];
                 if(validCredentials){
+                    context.changeToLogin(userInfo)
                    
                     history.replace('/products')
-                    context.changeToLogin()
+                    
+
                     // alert("success")
                 }
                 else{
