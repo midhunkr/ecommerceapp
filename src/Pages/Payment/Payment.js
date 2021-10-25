@@ -1,6 +1,7 @@
 
 import { useContext } from "react";
 import { Container, Form, FormLabel, Table, Row, Col, Button } from "react-bootstrap";
+import { useHistory } from "react-router";
 import AddCard from "../../Components/AddCard";
 import PaymentCardContex from "../../Context/cardContext";
 import CartContext from "../../Context/cartContext";
@@ -11,11 +12,14 @@ export default function Payment(props) {
     const cardContext = useContext(PaymentCardContex);
     const cartContext=useContext(CartContext);
     const orderContext=useContext(OrderContext);
+    const history=useHistory();
     const moveToOrders = () => {
         orderContext.addItems(props.products)
         if(!notFromCart){
             cartContext.clearCart()
         }
+        history.push('/orders')
+
         
     }
     return (

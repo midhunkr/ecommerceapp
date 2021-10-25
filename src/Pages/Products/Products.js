@@ -5,6 +5,7 @@ import speaker from '../../Assets/Images/speaker.jpg'
 import ProductCard from "../../Components/ProductCard";
 import { productData } from "../../Data/products.js"
 import { useState } from "react";
+import SearchBar from "../../Components/SearchBar";
 export default function ProductPage() {
     const [data, setNewData] = useState(productData)
     const [isLoading, setIsLoading] = useState(false)
@@ -15,23 +16,28 @@ export default function ProductPage() {
             return productData.filter((item) => item.category.includes(type))
         })
     }
+    function searchProduct(searchKey) {
+        setNewData((previous) => {
+            return productData.filter((item) => item.name.includes(searchKey));
+        })
+    }
     function applyPriceFilter(range) {
         console.log(`function triggered ${range}`);
         if (range == 'high-low') {
             console.log(`inside ${range}`);
-           
+
             const dataNew = productData;
-            const newItemData =dataNew.sort((item1, item2) => item2.price - item1.price)
+            const newItemData = dataNew.sort((item1, item2) => item2.price - item1.price)
             setNewData(newItemData)
-            
+
         }
         else if ('low-high') {
             console.log(`inside ${range}`);
-           
+
             const data = productData;
             const newData = data.sort((item1, item2) => item1.price - item2.price)
             setNewData(newData)
-           
+
         }
     }
 
@@ -39,6 +45,12 @@ export default function ProductPage() {
         <>
 
             <Container fluid>
+                <Row >
+                    <Container className="d-flex justify-content-center" fluid>
+                        <SearchBar searchFunction={searchProduct}></SearchBar>
+                    </Container>
+
+                </Row>
                 <Row>
                     <Col md={3} >
                         <Row className="mt-3">
@@ -72,6 +84,7 @@ export default function ProductPage() {
                         </Row>
                     </Col>
                     <Col md={9}>
+
                         {isLoading ? <div>Loading</div> : <Row md={3}>
                             {data.map((item) => (
                                 <Col>
