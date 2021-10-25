@@ -4,17 +4,35 @@ import '../../Styles/main.css'
 import speaker from '../../Assets/Images/speaker.jpg'
 import ProductCard from "../../Components/ProductCard";
 import { productData } from "../../Data/products.js"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../../Components/SearchBar";
+import PaginationFrame from "../../Components/PaginationFrame";
 export default function ProductPage() {
+    
+    
     const [data, setNewData] = useState(productData)
     const [isLoading, setIsLoading] = useState(false)
-
+    const numberOfPageFrames=Math.ceil(productData.length/5)
+    function moveToNextPage(startIndex){
+        let start;
+        if(startIndex==0){
+            start=0;
+        }
+        else{
+            start=(startIndex+1)*5-5;
+        }
+        const newArray=[];
+        for(let index=start;index<start+5&&index<productData.length;index++){
+            newArray.push(productData[index])
+        }
+        setNewData(newArray)
+    }
     function applyTypeFilter(type) {
         // console.log(`the type is ${type}`);
         setNewData((previous) => {
             return productData.filter((item) => item.category.includes(type))
         })
+        // moveToNextPage(0);
     }
     function searchProduct(searchKey) {
         setNewData((previous) => {
@@ -40,6 +58,9 @@ export default function ProductPage() {
 
         }
     }
+    useEffect(()=>{
+        moveToNextPage(0)
+    },[])
 
     return (
         <>
@@ -92,8 +113,14 @@ export default function ProductPage() {
                                 </Col>
                             ))}
                         </Row>}
+                        <Row>
+                            <Col className="d-flex justify-content-center mt-3 mb-3">
+                                <PaginationFrame length={numberOfPageFrames} onChangeFrame={moveToNextPage}></PaginationFrame>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
+
 
             </Container>
 
