@@ -41,7 +41,7 @@ export default function Profile() {
                                     <Row className="mt-2">
                                         <Col>
                                             <Container className="d-flex justify-content-end">
-                                                <Button variant="warning" >Edit Details</Button>
+                                                <Button variant="warning" onClick={()=>{alert("Not available!!")}} >Edit Details</Button>
                                             </Container>
                                         </Col>
                                     </Row>
