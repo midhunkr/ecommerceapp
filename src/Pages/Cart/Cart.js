@@ -28,7 +28,7 @@ export default function Cart() {
   }
   useEffect(() => {
     moveToNextPage(0)
-  }, [])
+  }, [newData])
   if (newData.length == 0) {
     return (
       <Container className="d-flex" fluid>

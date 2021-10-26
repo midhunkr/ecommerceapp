@@ -24,7 +24,7 @@ export default function WishList() {
   }
   useState(() => {
     moveToNextPage(0);
-  }, [])
+  }, [newData])
   if (newData.length == 0) {
     return (
       <Container className="d-flex" fluid>
@@ -35,7 +35,7 @@ export default function WishList() {
   return (
     <Container>
       <Row md={3}>
-        {newData.map((item) => (
+        {context.items.map((item) => (
           <Col>
             <ProductCard data={item} screenIsCart={false} screeIsWishList={true} disableButtons={false}></ProductCard>
           </Col>
